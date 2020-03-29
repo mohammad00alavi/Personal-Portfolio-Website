@@ -1,3 +1,9 @@
+
+// UI Design and Code by Mohammad Alavi Copyright (c) 2019
+// Github Account: https://github.com/mohammad00alavi
+// Email: smalavi71@gmail.com
+// Linkedin: https://www.linkedin.com/in/mohammad00alavi/
+
 // Page loading
 
 $(window).on("load", function() {
@@ -102,44 +108,9 @@ $(document).ready(function() {
       offset: "90%"
     }
   );
-  // Navigation current class (have problem, I disable it. should fix it or search for
-  // others scripts)
-
-  // $("#home").waypoint(
-  //   function(direction) {
-  //     $(".main-nav li a").removeClass("current");
-  //     $("#home-nav").addClass("current");
-  //   },
-  //   {
-  //     offset: "-50%"
-  //   }
-  // );
-  // $("#about").waypoint(function(direction) {
-  //   $(".main-nav li a").removeClass("current");
-  //   $("#about-nav").addClass("current");
-  // });
-  // $("#services").waypoint(function(direction) {
-  //   $(".main-nav li a").removeClass("current");
-  //   $("#services-nav").addClass("current");
-  // });
-  // $("#portfolio").waypoint(function(direction) {
-  //   $(".main-nav li a").removeClass("current");
-  //   $("#portfolio-nav").addClass("current");
-  // });
-  // $("#blog").waypoint(function(direction) {
-  //   $(".main-nav li a").removeClass("current");
-  //   $("#blog-nav").addClass("current");
-  // });
-  // $("#contact").waypoint(
-  //   function(direction) {
-  //     $(".main-nav li a").removeClass("current");
-  //     $("#contact-nav").addClass("current");
-  //   },
-  //   {
-  //     offset: "30%"
-  //   }
-  // );
 });
+
+// Skills Section - Skill Bars Animation on scroll
 
 $(document).ready(function() {
   $(".js--skills").waypoint(
@@ -192,31 +163,35 @@ $(document).ready(function() {
 
 // Portfolio Gallery Filter
 
-$(document).ready(function() {
-  $(".js--development").click(function() {
-    $(".development").removeClass("hide");
-    $(".design").addClass("hide");
-    $(".photography").addClass("hide");
-  });
-  $(".js--photography").click(function() {
-    $(".photography").removeClass("hide");
-    $(".development").addClass("hide");
-    $(".design").addClass("hide");
-  });
-  $(".js--design").click(function() {
-    $(".design").removeClass("hide");
-    $(".photography").addClass("hide");
-    $(".development").addClass("hide");
-  });
-  $(".js--all").click(function() {
-    $(".design").removeClass("hide");
-    $(".photography").removeClass("hide");
-    $(".development").removeClass("hide");
-  });
-
-  // Add Current class for navigation menu
-  $(".main-nav li a").click(function() {
-    $(".main-nav li a").removeClass("current");
-    $(this).addClass("current");
-  });
+$(".js--development").click(function() {
+  $(".development").delay(200).fadeIn(200);
+  $(".design,.photography").fadeOut(200);
+  galleryFilter(this);
 });
+$(".js--photography").click(function() {
+  $(".photography").delay(200).fadeIn(200);
+  $(".development,.design").fadeOut(200);
+  galleryFilter(this);
+});
+$(".js--design").click(function() {
+  $(".design").delay(200).fadeIn(200);
+  $(".photography,.development").fadeOut(200);
+  galleryFilter(this);
+});
+$(".js--all").click(function() {
+  $(".photography,.development,.design").delay(200).fadeIn(200);
+  galleryFilter(this);
+});
+
+function galleryFilter(x) {
+  $('.filter span').removeClass('fil-current');
+  $(x).addClass('fil-current');
+}
+
+// Add Current class for navigation menu
+
+$(".main-nav li a").click(function() {
+  $(".main-nav li a").removeClass("current");
+  $(this).addClass("current");
+});
+
